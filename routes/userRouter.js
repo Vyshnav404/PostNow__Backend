@@ -50,7 +50,8 @@ const {
 } = require("../controllers/userController/othersDetailsController");
 const { getFriend } = require("../controllers/userController/friendController");
 const { getAdsData } = require('../controllers/userController/userAdController')
-const { followUser,unFollowUser } = require('../controllers/userController/followUnfollowController')
+const { followUser,unFollowUser } = require('../controllers/userController/followUnfollowController');
+const { passwordResetPost,verifyLink,addingNewPassword } = require("../controllers/userController/passwordResetController");
 
 const router = express.Router();
 
@@ -117,5 +118,9 @@ router.get('/get-hot-questions',verifyToken,getHotQuestions)
 router.put('/follow/:id',followUser)
 router.put('/unfollow/:id',unFollowUser)
 
+// Forget password reset
+router.post('/password-reset',passwordResetPost)
+router.get('/:id',verifyLink)
+router.post('/password-reset/:id',addingNewPassword)
 
 module.exports = router;

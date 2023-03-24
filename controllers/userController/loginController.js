@@ -5,7 +5,6 @@ const bcrypt = require('bcrypt');
 
 
 const userLogin = async(req,res)=>{
-    console.log(req.body);
     try {
         const {error} = validate(req.body);
         if(error)
